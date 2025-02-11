@@ -27,8 +27,8 @@ services:
     image: nginx:alpine
     container_name: smartoffice360-nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "8081:80"   # HTTP on port 8081
+      - "8443:443"  # HTTPS on port 8443
     volumes:
       - ./ssl:/etc/nginx/ssl
       - ./config/nginx:/etc/nginx/conf.d
@@ -36,6 +36,7 @@ services:
       - auth
       - api-gateway
     restart: always
+
 
   api-gateway:
     image: kong:latest
